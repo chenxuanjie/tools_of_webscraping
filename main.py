@@ -3,7 +3,7 @@ Program:
 	该程序可以协助识别网址中的不同部分，以便加快爬虫项目的开发。
 History:
 	2023/4/7	Shane	Second release
-	finish function of createDoc
+	finish function of openDoc
 '''
 from docx import Document
 from docx.shared import Cm,Pt
@@ -28,7 +28,7 @@ def createDoc(message1, message2, docName):
     document = Document()       #创建文件对象
     document.add_paragraph(message1, style='List Bullet')   #添加无序列表
     document.add_paragraph (message2 , style = 'List Bullet')
-    document.save (f'{docName}.docx')     #保存为
+    document.save (docName)     #保存为
 
 def tools_checkDif(url1, url2):
     '''对比两个网址，并输出其网址差异的地方'''
