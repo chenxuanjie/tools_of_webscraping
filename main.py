@@ -2,20 +2,33 @@
 Program:
 	该程序可以协助识别网址中的不同部分，以便加快爬虫项目的开发。
 History:
-	2023/4/7	Shane	First release
-	finish function of tools_checkDif
+	2023/4/7	Shane	Second release
+	finish function of createDoc
 '''
 from docx import Document
 from docx.shared import Cm,Pt
 from docx.document import Document as Doc
 import os
 
-def createDoc(message1, message2):
+def openDoc(docName):
+    '''打开word文档'''
+    path = os.getcwd()
+    docPath = path + f'\\{docName}'
+    print (docPath)
+    #空循环，检测到有word文档为止
+    while not os.path.exists (docPath):
+        pass
+    try:
+        os.system(f'{docPath}')
+    except:
+        print('打开word文档失败')
+
+def createDoc(message1, message2, docName):
     '''创建一个word文档，并将信息导入'''
     document = Document()       #创建文件对象
     document.add_paragraph(message1, style='List Bullet')   #添加无序列表
     document.add_paragraph (message2 , style = 'List Bullet')
-    document.save ('demo.docx')     #保存为
+    document.save (f'{docName}.docx')     #保存为
 
 def tools_checkDif(url1, url2):
     '''对比两个网址，并输出其网址差异的地方'''
@@ -48,5 +61,6 @@ if __name__ == '__main__':
     url1 = input("请输入网址1：")
     url2 = input("请输入网址2：")
     url1, url2 = tools_checkDif(url1, url2)
-    createDoc(url1, url2)
-
+    docName = 'demo.docx'
+    createDoc(url1, url2, docName)
+    openDoc (docName)

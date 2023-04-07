@@ -2,6 +2,8 @@
 Program:
 	该程序可以协助识别网址中的不同部分，以便加快爬虫项目的开发。
 History:
+	2023/4/7	Shane	Second release
+	finish function of createDoc
 	2023/4/7	Shane	First release
 	finish function of tools_checkDif
 '''
